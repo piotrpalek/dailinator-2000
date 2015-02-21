@@ -5,16 +5,19 @@
 <body>
   <header>
     <div class="container">
-      <h1>Dailinator 2000</h1>
+      <h1 class="center-align">Dailinator 2000</h1>
     </div>
   </header>
   <main>
     <div class="container">
       <div class="row">
-        <div class="col s6">
+        <div class="col s6 offset-s3">
           {{> dailyForm}}
         </div>
-        <div class="col s6">
+      </div>
+      <div class="row">
+        <div class="col s6 offset-s3">
+          <h4>Daily updates:</h4>
           {{> dailyUpdates}}
         </div>
       </div>
@@ -31,9 +34,15 @@
 </template>
 
 <template name="daily">
-  <li class="valign-wrapper">
-    <span class="valign">{{body}}</span>
-    <a class="btn-floating waves-effect waves-light red delete"><i class="mdi-action-highlight-remove"></i></a>
+  <li class="daily-item">
+    <div class="card-panel">
+      <p>
+        {{body}}
+      </p>
+      <a class="btn-floating waves-effect waves-light red delete">
+        <i class="mdi-action-highlight-remove"></i>
+      </a>
+    </div>
   </li>
 </template>
 
