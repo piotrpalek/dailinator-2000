@@ -4,7 +4,7 @@ Template.dailyForm.events({
     let author = event.target.author;
     let projectId = event.target.projectId;
 
-    Meteor.call('addDaily', body.value, author.value, projectId.value);
+    Meteor.call('addDaily', projectId.value, body.value, author.value);
 
     body.value = '';
     author.value = '';

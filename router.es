@@ -10,19 +10,20 @@ Router.configure({
   layoutTemplate: 'applicationLayout'
 });
 
-Router.route('/', function () {
+Router.route('/projects/:_id/dailies', function () {
   this.render('dailies', {
     data: function() {
       return {
-        datesWithDailies: function() {
+        datesWithDailies: () => {
           let dailies = [];
           let ownerId = Meteor.userId();
+          let projectId = this.params._id;
 
           if(Session.get('showRead')) {
-            dailies = dailyUpdates.find({}, { sort: { createdAt: -1} }).fetch();
+            dailies = dailyUpdates.find({project_id: projectId}, { sort: { createdAt: -1} }).fetch();
           }
           else {
-            dailies = dailyUpdates.find({isRead: { $ne: true }}, { sort: { createdAt: -1} }).fetch();
+            dailies = dailyUpdates.find({project_id: projectId, isRead: { $ne: true }}, { sort: { createdAt: -1} }).fetch();
           }
 
           let groupedByDate = _.groupBy(dailies, (daily) => {
@@ -40,14 +41,14 @@ Router.route('/', function () {
             };
           });
         },
-        getData: function() {
-          let ownerId = Meteor.userId();
-          let project = Projects.findOne({owner_id: ownerId});
+        getData: () => {
+          let projectId = this.params._id;
+
           return {
-            project_id: project._id
+            project_id: projectId
           };
         },
-        showRead: function() {
+        showRead: () => {
           return Session.get('showRead');
         }
       }
@@ -69,12 +70,14 @@ Router.route('/projects/new', function () {
   this.render('newProject');
 });
 
-Router.route('/projects', function () {
+Router.route('/', function () {
   this.render('projects', {
-    data: {
-      projects: function() {
-        let ownerId = Meteor.userId();
-        return Projects.find({ owner_id: ownerId });
+    data: function() {
+      return {
+        projects: function() {
+          let ownerId = Meteor.userId();
+          return Projects.find({ owner_id: ownerId });
+        }
       }
     }
   });

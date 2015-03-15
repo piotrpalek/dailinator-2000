@@ -2,7 +2,7 @@
   <h4>Projects:</h4>
   <ul>
     {{#each projects}}
-      <li>{{name}}</li>
+      <li>{{name}} - {{#linkTo route="dailies.index"}}show dailies{{/linkTo}}</li>
     {{/each}}
   </ul>
 </template>
