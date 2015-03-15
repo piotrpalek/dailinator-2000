@@ -5,7 +5,14 @@
 <template name="applicationLayout">
   <header>
     <div class="container">
-      <h1 class="center-align">Dailinator 2000</h1>
+      <div class="row">
+        <div class="col s6 offset-s3">
+          <h1 class="center-align">Dailinator 2000</h1>
+        </div>
+        <div class="col s3">
+          <div class="login-box">{{> loginButtons}}</div>
+        </div>
+      </div>
     </div>
   </header>
   <main>
