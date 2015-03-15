@@ -1,3 +1,16 @@
 <head>
   <title>Dailinator 2000</title>
 </head>
+
+<template name="applicationLayout">
+  <header>
+    <div class="container">
+      <h1 class="center-align">Dailinator 2000</h1>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      {{> yield}}
+    </div>
+  </main>
+</template>
