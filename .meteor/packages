@@ -10,3 +10,4 @@ grigio:babel
 accounts-ui
 accounts-password
 materialize:materialize
+iron:router
