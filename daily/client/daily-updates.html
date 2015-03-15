@@ -1,7 +1,7 @@
 <template name="dailyUpdates">
-  <p class="input-field hide-read-dailies">
-    <input id="hide-read-dailies" type="checkbox" checked="{{showUnread}}" />
-    <label for="hide-read-dailies">Show unread dailies</label>
+  <p class="input-field show-read-dailies">
+    <input id="show-read-dailies" type="checkbox" checked="{{showRead}}" />
+    <label for="show-read-dailies">Show unread dailies</label>
   </p>
   <ul>
     {{#each datesWithDailies}}

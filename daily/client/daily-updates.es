@@ -1,5 +1,5 @@
 Template.dailyUpdates.events({
-  'change .hide-read-dailies input' (e) {
-    Session.set('showUnread', e.target.checked);
+  'change .show-read-dailies input' (e) {
+    Session.set('showRead', e.target.checked);
   }
 });

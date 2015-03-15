@@ -2,7 +2,7 @@ Template.dailyUpdates.helpers({
   datesWithDailies () {
     let dailies = []
 
-    if(Session.get('showUnread')) {
+    if(Session.get('showRead')) {
       dailies = dailyUpdates.find({}, { sort: { createdAt: -1} }).fetch();
     }
     else {
@@ -25,6 +25,6 @@ Template.dailyUpdates.helpers({
     });
   },
   showUnread () {
-    return Session.get('showUnread');
+    return Session.get('showRead');
   }
 });
