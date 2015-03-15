@@ -3,10 +3,14 @@ Meteor.methods({
     dailyUpdates.insert({
       body: body,
       createdAt: new Date(),
-      createdBy: author
+      createdBy: author,
+      isRead: false
     });
   },
   removeDaily (dailyId) {
     dailyUpdates.remove(dailyId)
+  },
+  markDailyAsRead (dailyId) {
+    dailyUpdates.update(dailyId, { isRead: true });
   }
 });

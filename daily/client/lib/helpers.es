@@ -1,6 +1,6 @@
 Template.dailyUpdates.helpers({
   datesWithDailies () {
-    let dailies = dailyUpdates.find({}, { sort: { createdAt: -1} }).fetch();
+    let dailies = dailyUpdates.find({}, { sort: { createdAt: -1}, isRead: { $ne: true } }).fetch();
 
     let groupedByDate = _.groupBy(dailies, (daily) => {
       return moment(daily.createdAt).format('YYYY-MM-DD');
