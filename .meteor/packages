@@ -12,3 +12,4 @@ accounts-password
 materialize:materialize
 iron:router
 momentjs:moment
+accounts-google
