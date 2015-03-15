@@ -1,10 +1,11 @@
 Meteor.methods({
-  addDaily (body, author) {
+  addDaily (project_id, body, author) {
     dailyUpdates.insert({
       body: body,
       createdAt: new Date(),
       createdBy: author,
-      isRead: false
+      isRead: false,
+      project_id: project_id
     });
   },
   removeDaily (dailyId) {
