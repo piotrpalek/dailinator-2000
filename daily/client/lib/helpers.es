@@ -1,6 +1,13 @@
 Template.dailyUpdates.helpers({
   datesWithDailies () {
-    let dailies = dailyUpdates.find({}, { sort: { createdAt: -1}, isRead: { $ne: true } }).fetch();
+    let dailies = []
+
+    if(Session.get('showUnread')) {
+      dailies = dailyUpdates.find({}, { sort: { createdAt: -1} }).fetch();
+    }
+    else {
+      dailies = dailyUpdates.find({isRead: { $ne: true }}, { sort: { createdAt: -1} }).fetch();
+    }
 
     let groupedByDate = _.groupBy(dailies, (daily) => {
       return moment(daily.createdAt).format('YYYY-MM-DD');
@@ -16,5 +23,8 @@ Template.dailyUpdates.helpers({
         dailies: dailiesForDate
       };
     });
+  },
+  showUnread () {
+    return Session.get('showUnread');
   }
 });

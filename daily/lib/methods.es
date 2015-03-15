@@ -11,6 +11,6 @@ Meteor.methods({
     dailyUpdates.remove(dailyId)
   },
   markDailyAsRead (dailyId) {
-    dailyUpdates.update(dailyId, { isRead: true });
+    dailyUpdates.update(dailyId, { $set: { isRead: true } });
   }
 });
