@@ -11,12 +11,7 @@ if (Meteor.isClient) {
     'submit .daily-form' (event) {
       let body = event.target.body;
 
-      dailyUpdates.insert({
-        body: body.value,
-        createdAt: new Date(),
-        createdBy: ''
-      });
-
+      Meteor.call('addDaily', body.value)
       body.value = '';
 
       return false;
@@ -25,7 +20,7 @@ if (Meteor.isClient) {
 
   Template.daily.events({
     'click .delete' () {
-      dailyUpdates.remove(this._id);
+      Meteor.call('removeDaily', this._id);
     }
   });
 }
@@ -35,3 +30,16 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+Meteor.methods({
+  addDaily: function (body, author) {
+    dailyUpdates.insert({
+      body: body,
+      createdAt: new Date(),
+      createdBy: author
+    });
+  },
+  removeDaily: function (dailyId) {
+    dailyUpdates.remove(dailyId)
+  }
+});
