@@ -1,5 +1,20 @@
 Template.dailyUpdates.helpers({
-  dailies () {
-    return dailyUpdates.find({}, { sort: { createdAt: -1} });
+  datesWithDailies () {
+    let dailies = dailyUpdates.find({}, { sort: { createdAt: -1} }).fetch();
+
+    let groupedByDate = _.groupBy(dailies, (daily) => {
+      return moment(daily.createdAt).format('YYYY-MM-DD');
+    });
+
+    let groupedDates = _.keys(groupedByDate);
+
+    return _.map(groupedDates, (date) => {
+      dailiesForDate = groupedByDate[date];
+
+      return {
+        date: date,
+        dailies: dailiesForDate
+      };
+    });
   }
 });

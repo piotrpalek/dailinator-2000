@@ -1,7 +1,11 @@
 <template name="dailyUpdates">
   <ul>
-    {{#each dailies}}
-      {{> daily}}
+    {{#each datesWithDailies}}
+      {{date}}
+
+      {{#each dailies}}
+        {{> daily}}
+      {{/each}}
     {{/each}}
   </ul>
 </template>
