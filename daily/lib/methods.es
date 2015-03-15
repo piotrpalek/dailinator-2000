@@ -1,12 +1,12 @@
 Meteor.methods({
-  addDaily: function (body, author) {
+  addDaily (body, author) {
     dailyUpdates.insert({
       body: body,
       createdAt: new Date(),
       createdBy: author
     });
   },
-  removeDaily: function (dailyId) {
+  removeDaily (dailyId) {
     dailyUpdates.remove(dailyId)
   }
 });
