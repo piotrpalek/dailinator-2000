@@ -13,7 +13,8 @@ if (Meteor.isClient) {
 
       dailyUpdates.insert({
         body: body.value,
-        createdAt: new Date()
+        createdAt: new Date(),
+        createdBy: ''
       });
 
       body.value = '';
